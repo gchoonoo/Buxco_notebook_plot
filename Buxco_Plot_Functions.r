@@ -186,9 +186,11 @@ dot_plot_data = function(var, virus, lines, xlab=NULL, day=NULL, day_summary, ve
   return(list(p_obj=plot_obj, var=var, virus=virus, day=day, xlab=xlab))
 }
 
+
 dot_plot = function(dp_data) {
   ## Get heritability
-  herit = all_buxco_herit[with(all_buxco_herit, virus==dp_data$virus & tolower(variable)==dp_data$var), 'icc_gelman_hill']
+  # Updated this to all_buxco_herit$variable instead of tolower(variable) (GC)
+  herit = all_buxco_herit[with(all_buxco_herit, virus==dp_data$virus & all_buxco_herit$variable==dp_data$var), 'icc_gelman_hill']
   
   ## Create plot title
   if (dp_data$virus == 'FLU') {
