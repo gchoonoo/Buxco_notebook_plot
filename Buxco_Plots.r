@@ -35,4 +35,10 @@ buxco_plot(data1=buxco_annot, batch_date="November_2013", mating="13067x16912", 
 # Dot plot
 buxco_dot_plot_data = dot_plot_data(var="Log(Penh)", virus=c("SARS"), lines=unique(buxco_annot$Mating), xlab=NULL, day=4, day_summary=4, vert_line=0)
 
+# Load heritability data
+load("buxco_heritability_27-jun-2016.rda")
+
+# Match variable names
+all_buxco_herit[which(all_buxco_herit[,"variable"] == "Penh_log"),"variable"] <- "Log(Penh)"
+
 dot_plot(buxco_dot_plot_data)
